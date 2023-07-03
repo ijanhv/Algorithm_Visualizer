@@ -1,5 +1,6 @@
 "use client";
 import { getInsertionSortAnims } from "@/components/Algortithms/InsertionSort";
+import { getMergeSortAnims } from "@/components/Algortithms/MergeSort";
 import { createContext, useEffect, useState } from "react";
 
 const initVals: Settings = {
@@ -53,6 +54,12 @@ const AlgoContext: React.FC<AlgoContextProps> = ({ children }) => {
   const sort = (algoType: AlgoType) => {
     switch (algoType) {
       case "merge sort":
+        const aux: number[] = [];
+        const arr: number[][] = [];
+        const nums = [...items];
+        getMergeSortAnims(nums, aux, arr, 0, items.length - 1);
+        animateMerge(nums, arr);
+        console.log("hi", nums);
         break;
       case "insertion sort":
         const { newArr, animArr } = getInsertionSortAnims(items);
@@ -63,6 +70,24 @@ const AlgoContext: React.FC<AlgoContextProps> = ({ children }) => {
         console.log("default");
         break;
     }
+  };
+
+
+  const animateMerge = (newArr: number[], arr: number[][]) => {
+    arr.forEach(([newHeight, index], idx) => {
+        const div = document.getElementById(`${index}`);
+        if (!div) return;
+        setTimeout(() => {
+          div.style.backgroundColor = "#9C9CFC";
+          div.style.height = `${newHeight / 7}%`;
+          setTimeout(() => {
+            div.style.backgroundColor = "teal";
+            if (idx === arr.length - 1) {
+              setItems(newArr);
+            }
+          }, settings.delay * 2);
+        }, settings.delay * idx * 2);
+      });
   };
 
   const animateDivs = (newArr: number[], arr: number[][]) => {

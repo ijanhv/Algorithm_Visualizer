@@ -20,7 +20,7 @@ const Navbar = () => {
   ) => {
     if (!setSettings) return;
     setSettings((c) => ({ ...c, algoType: type }));
-    console.log(settings.algoType);
+    // console.log(settings.algoType);
   };
 
   return (
@@ -29,10 +29,10 @@ const Navbar = () => {
         <div className="space-x-3">
           <button
             onClick={() => onAlgoChange("merge sort")}
-            className={`bg-teal-600 hover:bg-teal-600 hover:shadow-lg text-white rounded-full shadow-md py-2 px-3 transition-all active:scale-95
+            className={`bg-teal-700 hover:bg-teal-600 hover:shadow-lg text-white rounded-full shadow-md py-2 px-3 transition-all active:scale-95
             ${
               settings.algoType === "merge sort"
-                ? "border-2 border-teal-900 font-semibold"
+                ? "border-2 border-teal-100 font-semibold"
                 : ""
             }
             `}
@@ -41,10 +41,10 @@ const Navbar = () => {
           </button>
           <button
             onClick={() => onAlgoChange("insertion sort")}
-            className={`bg-teal-600 hover:bg-teal-600 hover:shadow-lg text-white rounded-full shadow-md py-2 px-3 transition-all active:scale-95
+            className={`bg-teal-700 hover:bg-teal-600 hover:shadow-lg text-white rounded-full shadow-md py-2 px-3 transition-all active:scale-95
             ${
               settings.algoType === "insertion sort"
-                ? "border-2 border-teal-900 font-semibold"
+                ? "border-2 border-teal-100 font-semibold"
                 : ""
             }
             `}
@@ -73,13 +73,12 @@ const Navbar = () => {
           onChange={onArrayChange}
         />
         <label htmlFor="items_amount" className="text-white">Delay: {settings.delay}</label>
-
         <input
           type="range"
           name="delay"
           id="delay"
           className="w-full max-w-2xl"
-          min={3}
+          min={1}
           defaultValue={15}
           onChange={onDelayChange}
         />
