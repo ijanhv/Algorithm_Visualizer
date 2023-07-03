@@ -1,9 +1,12 @@
-import Image from 'next/image'
+import Bars from "@/components/Bars";
+import Navbar from "@/components/Navbar";
+import Image from "next/image";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-     
+    <main className="grid grid-rows-[repeat(10,_1fr)] bg-slate-800 w-screen screen">
+
+      <Bars />
     </main>
-  )
+  );
 }
