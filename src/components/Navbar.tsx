@@ -24,7 +24,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="w-screen bg-slate-700 grid grid-flow-row">
+    <nav className="w-screen bg-slate-700 grid grid-flow-row shadow-lg">
       <div className="container flex items-center justify-center w-full p-4 space-x-5">
         <div className="space-x-3">
           <button
@@ -50,6 +50,42 @@ const Navbar = () => {
             `}
           >
             Insertion Sort
+          </button>
+          <button
+            onClick={() => onAlgoChange("bubble sort")}
+            className={`bg-teal-700 hover:bg-teal-600 hover:shadow-lg text-white rounded-full shadow-md py-2 px-3 transition-all active:scale-95
+            ${
+              settings.algoType === "bubble sort"
+                ? "border-2 border-teal-100 font-semibold"
+                : ""
+            }
+            `}
+          >
+            Bubble Sort
+          </button>
+          <button
+            onClick={() => onAlgoChange("selection sort")}
+            className={`bg-teal-700 hover:bg-teal-600 hover:shadow-lg text-white rounded-full shadow-md py-2 px-3 transition-all active:scale-95
+            ${
+              settings.algoType === "selection sort"
+                ? "border-2 border-teal-100 font-semibold"
+                : ""
+            }
+            `}
+          >
+            Selection Sort
+          </button>
+          <button
+            onClick={() => onAlgoChange("quick sort")}
+            className={`bg-teal-700 hover:bg-teal-600 hover:shadow-lg text-white rounded-full shadow-md py-2 px-3 transition-all active:scale-95
+            ${
+              settings.algoType === "quick sort"
+                ? "border-2 border-teal-100 font-semibold"
+                : ""
+            }
+            `}
+          >
+            Quick Sort
           </button>
         </div>
         <button 
