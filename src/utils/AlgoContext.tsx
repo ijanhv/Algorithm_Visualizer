@@ -88,8 +88,8 @@ const AlgoContext: React.FC<AlgoContextProps> = ({ children }) => {
         break;
       case "selection sort":
         const { newArr: selectionArr, animArr: selectionAnimArr } =
-          getSelectionSortAnims(items);
-        animateDivs(selectionArr, selectionAnimArr);
+        getSelectionSortAnims(items);
+        animateSelection(selectionArr, selectionAnimArr);
 
         break;
       default:
@@ -140,6 +140,38 @@ const AlgoContext: React.FC<AlgoContextProps> = ({ children }) => {
       }, settings.delay * idx * 2);
     });
   };
+
+  const animateSelection = (newArr: number[], arr: number[][]) => {
+    arr.forEach(([first, second], idx) => {
+      const div1 = document.getElementById(`${first}`);
+      const div2 = document.getElementById(`${second}`);
+      if (!div1 || !div2) return;
+
+      // show swapping animations
+      
+
+      setTimeout(() => {
+        div1.style.backgroundColor = "#9C9CFC";
+        div2.style.backgroundColor = "#9C9CFC";
+        const divHeight = div1.style.height;
+        div1.style.height = div2.style.height;
+        div2.style.height = divHeight;
+        setTimeout(() => {
+          div1.style.backgroundColor = "teal";
+          div2.style.backgroundColor = "teal";
+
+          if (idx === arr.length - 1) {
+            setTimeout(() => {
+              setItems(newArr);
+            }, settings.delay * 5);
+          }
+        }, settings.delay * 5);
+      }, idx * settings.delay * 5);
+    }
+    )
+  }
+
+
 
   const animateDivs = (newArr: number[], arr: number[][]) => {
     arr.forEach(([first, second], idx) => {
